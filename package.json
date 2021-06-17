@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-b7web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:claudiobelempb/nodejs-b7web.git",
+  "author": "claudiobelempb <claudio.c.lima@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./outDir --transforms imports"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
