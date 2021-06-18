@@ -1,13 +1,8 @@
 import express from 'express';
+import { routes } from './routes'
 
 const app = express();
-const router = express.Router();
+app.use(routes);
 
-router.get('/', (request, response) => {
-  return response.json({
-    message: "Hello World!",
-  });
-});
-app.use('/', router)
 
 export { app };

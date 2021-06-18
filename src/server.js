@@ -2,7 +2,10 @@ import { app } from './app';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+//config variables
 dotenv.config({path: "variables.env"});
+
+// config mongodb
 mongoose.connect(process.env.DATABASE, {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -14,5 +17,5 @@ mongoose.connection.on('error', (error) => {
 
 app.set('port', process.env.PORT || 3000);
 const server = app.listen(app.get('port'), () => {
-  console.log(`Server run in port: ${server.address().port}`);
+  console.log(`Server running on port: ${server.address().port}`);
 });
