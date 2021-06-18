@@ -8,6 +8,6 @@ router.get('/', (request, response) => {
     message: "Hello World!",
   });
 });
-app.use('/', router);
+app.use('/', router)
 
 export { app };

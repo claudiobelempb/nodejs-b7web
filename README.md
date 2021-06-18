@@ -6,6 +6,8 @@ Dependence - S
 #
 yarn add express -S
 #
+yarn add dotenv -S
+#
 yarn add uuid -S
 #
 yarn add mongodb -S
