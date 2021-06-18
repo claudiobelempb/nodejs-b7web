@@ -1,13 +1,9 @@
 import { Router } from 'express';
+import { HomeController } from '../controllers/HomeController';
 
 const homeRoutes = Router();
+const homeController = new HomeController();
 
-homeRoutes.get('/', (request, response) => {
-  const data = {
-    name: 'Cláudio Cardoso',
-    idade: 44,
-  }
-  return response.render('home', data);
-});
+homeRoutes.get('/', homeController.index);
 
 export { homeRoutes}
