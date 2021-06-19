@@ -1,1 +1,12 @@
-<h1>Posts</h1>
+{{>header/index}}
+<main>
+<h1>Posts 2</h1>
+
+{{#posts}}
+  <div>
+    <h2>{{title}}</h2>
+    <p>{{body}}</p>
+    <small>{{tags}}</small>
+  </div>
+{{/posts}}
+</main>

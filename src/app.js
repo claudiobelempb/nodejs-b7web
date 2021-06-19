@@ -1,6 +1,15 @@
 import express from 'express';
 import path from 'path';
 import mustache from 'mustache-express';
+import cookieParser from 'cookie-parser'
+import session from 'express-session';
+import flash from 'express-flash';
+
+import dotenv from 'dotenv';
+
+//config variables
+dotenv.config({path: "variables.env"});
+
 import { routes } from './routes';
 import helpers from './helpers';
 import { errorNotFound } from './handlers/errorNotFound';
@@ -11,8 +20,18 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
+app.use(cookieParser(process.env.SECRET));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(flash());
+
 app.use((request, response, next) => {
   response.locals.h = helpers;
+  response.locals.flashes = request.flash(),
   next();
 });
 

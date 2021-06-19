@@ -5,4 +5,4 @@ exports.nav = [
   {name: 'Contact', slug: '/contact'},
   {name: 'Login', slug: '/users/login'},
   {name: 'Add posts', slug: '/posts'},
-]
+];

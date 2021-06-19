@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
 import { Posts } from '../models/Posts';
 
 class PostsController {
 
   async index(request, response) {
-    return response.render('posts');
+    const posts = await Posts.find();
+    return response.render('posts', { posts });
   }
 
   async store(request, response) {
@@ -16,16 +16,22 @@ class PostsController {
   async save(request, response) {
     const { title, body } = request.body;
 
+    const existsTitle = await Posts.findOne({title});
+
+    if(existsTitle){
+      request.flash('error', 'Post already exists!');
+      return response.redirect('/posts/add');
+    }
+
     const post = {
       title, 
       body,
     }
 
-    console.log(post);
+    await Posts.create(post);
+    request.flash('success', 'Post create in success!');
 
-    return response.json(post);
-
-    // await Posts.create(post);
+    return response.redirect('/posts/add');
 
   }
 }

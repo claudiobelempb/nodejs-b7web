@@ -17,6 +17,9 @@ yarn add mongoose -S
 Config Template Engine
 yarn add mustache-express -S
 #
+Message flash
+yarn add cookie-parser express-session express-flash  -S
+#
 yarn add yup -S
 #
 yarn add bcryptjs -S

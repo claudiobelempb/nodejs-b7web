@@ -1,3 +1,4 @@
+{{>header/index}}
 <h1>Add posts</h1>
 
 <form method="post">

@@ -12,6 +12,20 @@
   {{/title}}
 </head>
 <body>
+  <div>
+    {{#flashes}}
+      {{#success}}
+        {{.}}
+      {{/success}}
+    {{/flashes}}
+
+    {{#flashes}}
+      {{#error}}
+        {{.}}
+      {{/error}}
+    {{/flashes}}
+  </div>
+
   <header>
     <nav>
       <ul>
