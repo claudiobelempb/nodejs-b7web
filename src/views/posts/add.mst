@@ -1,0 +1,19 @@
+<h1>Add posts</h1>
+
+<form method="post">
+  <label for="title">
+    <span>Title</span>
+    <input type="text" name="title" id="" />
+  </label>
+  <hr>
+  <label for="tags">
+    <span>Tags</span>
+  </label>
+  <hr>
+  <label for="body">
+    <span>Content</span>
+    <textarea type="text" name="body" id=""></textarea>
+  </label>
+  <hr>
+  <input type="submit" value="Save" />
+</form>

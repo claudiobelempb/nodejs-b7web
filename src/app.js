@@ -7,6 +7,9 @@ import { errorNotFound } from './handlers/errorNotFound';
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({
+  extended: true,
+}));
 
 app.use((request, response, next) => {
   response.locals.h = helpers;

@@ -2,6 +2,8 @@ import { app } from './app';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import './models/Posts';
+
 //config variables
 dotenv.config({path: "variables.env"});
 

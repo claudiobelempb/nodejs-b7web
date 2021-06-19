@@ -6,4 +6,4 @@ const homeController = new HomeController();
 
 homeRoutes.get('/', homeController.index);
 
-export { homeRoutes}
+export { homeRoutes };
