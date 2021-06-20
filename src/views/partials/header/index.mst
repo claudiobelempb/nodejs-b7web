@@ -20,6 +20,12 @@
     {{/flashes}}
 
     {{#flashes}}
+      {{#info}}
+       {{.}}
+      {{/info}}
+    {{/flashes}}
+
+    {{#flashes}}
       {{#error}}
         {{.}}
       {{/error}}

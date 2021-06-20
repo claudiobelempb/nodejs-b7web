@@ -2,11 +2,14 @@
 <main>
 <h1>Posts 2</h1>
 
+{{^posts}}
+  <div>Not Posts</div>
+{{/posts}}
 {{#posts}}
-  <div>
-    <h2>{{title}}</h2>
-    <p>{{body}}</p>
-    <small>{{tags}}</small>
-  </div>
+<div>
+  <h2>{{title}}</h2>
+  <p>{{body}}</p>
+  <small>{{tags}}</small>
+</div>
 {{/posts}}
 </main>

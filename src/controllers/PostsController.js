@@ -4,13 +4,18 @@ class PostsController {
 
   async index(request, response) {
     const posts = await Posts.find();
-    return response.render('posts', { posts });
+    const data = {
+      title: 'Post',
+    }
+    return response.render('posts', { posts } );
   }
 
   async store(request, response) {
 
-    return response.render('posts/add');
-
+    const data = {
+      title: 'Post add'
+    }
+    return response.render('posts/add', data);
   }
 
   async save(request, response) {
@@ -28,10 +33,14 @@ class PostsController {
       body,
     }
 
-    await Posts.create(post);
-    request.flash('success', 'Post create in success!');
-
-    return response.redirect('/posts/add');
+    try{
+      await Posts.create(post);
+      request.flash('success', 'Post create in success!');
+      return response.redirect('/posts/add');
+    }catch(error){
+      request.flash('error', `Error: ${error.message}`);
+      return response.redirect('/posts/add');
+    }
 
   }
 }
