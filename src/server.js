@@ -10,7 +10,8 @@ import './models/Posts';
 // config mongodb
 mongoose.connect(process.env.DATABASE, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false,
 });
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (error) => {

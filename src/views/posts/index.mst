@@ -7,9 +7,11 @@
 {{/posts}}
 {{#posts}}
 <div>
-  <h2>{{title}}</h2>
+  <a href="posts/{{slug}}"><h2>{{title}}</h2></a>
   <p>{{body}}</p>
   <small>{{tags}}</small>
+  <a href="posts/{{slug}}/edit">[ Edit ]</a>
+  <hr>
 </div>
 {{/posts}}
 </main>

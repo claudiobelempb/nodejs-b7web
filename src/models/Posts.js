@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import slug from 'slug';
+
 mongoose.Promise = global.Promise;
 
 const posts = new mongoose.Schema({
@@ -24,6 +26,13 @@ const posts = new mongoose.Schema({
   }
 } , {
   timestamps: true,
+});
+
+posts.pre('save', function(next){
+  if(this.isModified("title")){
+    this.slug = slug(this.title, { lower: true });
+  }
+  next();
 });
 
 const Posts = mongoose.model('Posts', posts);

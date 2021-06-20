@@ -1,0 +1,23 @@
+<h1>Edit</h1>
+
+{{>header/index}}
+<h1>Add posts</h1>
+
+<form method="post">
+  <label for="title">
+    <span>Title</span>
+    <input type="text" name="title" id="" value="{{post.title}}" />
+  </label>
+  <hr>
+  <hr>
+  <label for="tags">
+    <span>Tags</span>
+  </label>
+  <hr>
+  <label for="body">
+    <span>Content</span>
+    <textarea type="text" name="body" id="" >{{post.body}}</textarea>
+  </label>
+  <hr>
+  <input type="submit" value="Save" />
+</form>
