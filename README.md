@@ -45,6 +45,11 @@ yarn add slug -S
 
 #
 
+Uploads de image
+yarn add multer jimp uuid -S
+
+#
+
 yarn add yup -S
 
 #

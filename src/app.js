@@ -12,7 +12,7 @@ dotenv.config({path: "variables.env"});
 
 import { routes } from './routes';
 import helpers from './helpers';
-import { errorNotFound } from './handlers/errorNotFound';
+import { errorNotFound } from './middlewares/errorNotFound';
 
 const app = express();
 app.use(express.json());
