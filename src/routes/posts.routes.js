@@ -9,5 +9,6 @@ postsRoutes.get('/posts/add', postsController.store);
 postsRoutes.post('/posts/add', postsController.save);
 postsRoutes.get('/posts/:slug/edit', postsController.update);
 postsRoutes.post('/posts/:slug/edit', postsController.updateAction);
+postsRoutes.get('/posts/:slug', postsController.show);
 
 export { postsRoutes };

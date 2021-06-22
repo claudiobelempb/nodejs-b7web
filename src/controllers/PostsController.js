@@ -13,6 +13,29 @@ class PostsController {
     return response.render('posts', data );
   }
 
+  async show(request, response) {
+    try {
+      const { slug } = request.params;
+      const post = await Posts.findOne({ slug });
+
+      if(!post) {
+        request.flash('error', `Error: Post not exists`);
+        return response.redirect(`/posts`);
+      }
+
+      const data = {
+        title: 'Post Show',
+        post,
+      }
+
+      return response.render('posts/show', data);
+
+    }catch(error) {
+      request.flash('error', `Error: ${error}`);
+      return response.status(400).redirect(`/posts`);
+    }
+  }
+
   async store(request, response) {
 
     const data = {
@@ -34,7 +57,6 @@ class PostsController {
     const tagsArray = tags.split(',').map((tag) => {
       return tag.trim();
     });
-    console.log(tags);
 
     const post = {
       title, 
@@ -55,7 +77,7 @@ class PostsController {
 
   async update(request, response) {
     const { slug } = request.params;
-    
+
     const post = await Posts.findOne({slug}, '_id title tags body slug createdAt updatedAt');
 
     if(slug !== post.slug){
@@ -82,9 +104,13 @@ class PostsController {
         return response.status(400).redirect(`/posts/${request.params.slug}/edit`);
       }
 
+      const tagsArray = tags.split(',').map((tag) => {
+        return tag.trim();
+      });
+
       const data = {
         title,
-        tags,
+        tags: tagsArray,
         body,
         slug: slugPost(title, { lower: true }),
       }
