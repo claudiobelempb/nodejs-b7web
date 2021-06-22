@@ -12,6 +12,8 @@
   <hr>
   <label for="tags">
     <span>Tags</span>
+    <input type="text" name="tags" id=""
+      value={{post.tags}}>
   </label>
   <hr>
   <label for="body">

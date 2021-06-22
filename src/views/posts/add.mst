@@ -9,6 +9,7 @@
   <hr>
   <label for="tags">
     <span>Tags</span>
+    <input type="text" name="tags" id="">
   </label>
   <hr>
   <label for="body">

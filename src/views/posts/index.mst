@@ -10,6 +10,7 @@
   <a href="posts/{{slug}}"><h2>{{title}}</h2></a>
   <p>{{body}}</p>
   <small>{{tags}}</small>
+  <br>
   <a href="posts/{{slug}}/edit">[ Edit ]</a>
   <hr>
 </div>

@@ -22,7 +22,7 @@ class PostsController {
   }
 
   async save(request, response) {
-    const { title, body } = request.body;
+    const { title, tags, body } = request.body;
 
     const existsTitle = await Posts.findOne({title});
 
@@ -31,8 +31,14 @@ class PostsController {
       return response.redirect('/posts/add');
     }
 
+    const tagsArray = tags.split(',').map((tag) => {
+      return tag.trim();
+    });
+    console.log(tags);
+
     const post = {
       title, 
+      tags: tagsArray,
       body,
     }
 
@@ -49,7 +55,14 @@ class PostsController {
 
   async update(request, response) {
     const { slug } = request.params;
-    const post = await Posts.findOne({slug}, '_id title body slug createdAt updatedAt');
+    
+    const post = await Posts.findOne({slug}, '_id title tags body slug createdAt updatedAt');
+
+    if(slug !== post.slug){
+      request.flash('error', `Error: Post not exists`);
+      return response.status(400).redirect(`/posts/${request.params.slug}/edit`);
+    }
+
     const data = {
       title: 'Posts Edit',
       post,
@@ -59,13 +72,19 @@ class PostsController {
   }
 
   async updateAction(request, response){
-    
     try{
-      const { title, body } = request.body;
+      const { title, tags, body } = request.body;
       const { slug } = request.params;
+
+      const post = await Posts.findOne({ slug });
+      if(slug !== post.slug){
+        request.flash('error', `Error: Post not exists`);
+        return response.status(400).redirect(`/posts/${request.params.slug}/edit`);
+      }
 
       const data = {
         title,
+        tags,
         body,
         slug: slugPost(title, { lower: true }),
       }
@@ -78,7 +97,7 @@ class PostsController {
     }catch(error){
 
       request.flash('error', `Error: ${error}`);
-      return response.status(400).redirect('/posts/:slug/edit');
+      return response.status(400).redirect(`/posts/${request.params.slug}/edit`);
 
     }
   }
