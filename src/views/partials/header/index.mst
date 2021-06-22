@@ -10,6 +10,7 @@
   {{^title}}
     <title>{{h.title}}</title>
   {{/title}}
+  <link rel="stylesheet" href="/assets/css/template.css">
 </head>
 <body>
   <div>
@@ -32,7 +33,7 @@
     {{/flashes}}
   </div>
 
-  <header>
+  <header class="header">
     <nav>
       <ul>
         {{#h.nav}}

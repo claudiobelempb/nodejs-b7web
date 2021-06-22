@@ -20,6 +20,8 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
+app.use(express.static(path.resolve(__dirname, '../', 'public')));
+
 app.use(cookieParser(process.env.SECRET));
 app.use(session({
   secret: process.env.SECRET,

@@ -1,3 +1,4 @@
+{{>header/index}}
 <h1>Show</h1>
 <h2>{{post.title}}</h2>
 <article>{{post.body}}</article>

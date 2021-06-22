@@ -1,21 +1,19 @@
 {{>header/index}}
-<h1>Add posts</h1>
-
-<form method="post">
-  <label for="title">
-    <span>Title</span>
-    <input type="text" name="title" id="" />
-  </label>
-  <hr>
-  <label for="tags">
-    <span>Tags</span>
-    <input type="text" name="tags" id="">
-  </label>
-  <hr>
-  <label for="body">
-    <span>Content</span>
-    <textarea type="text" name="body" id=""></textarea>
-  </label>
-  <hr>
-  <input type="submit" value="Save" />
-</form>
+<div class="form_default">
+  <form method="post">
+    <h1>Add posts</h1>
+    <label for="title">
+      <span>Title</span>
+      <input type="text" name="title" id="" />
+    </label>
+    <label for="tags">
+      <span>Tags</span>
+      <input type="text" name="tags" id="">
+    </label>
+    <label for="body">
+      <span>Content</span>
+      <textarea type="text" name="body" id=""></textarea>
+    </label>
+    <input type="submit" value="Save" />
+  </form>
+</div>
