@@ -1,12 +1,15 @@
 import { Router } from 'express';
 import { PostsController } from '../controllers/PostsController';
 
+import { uploadProductImages, resizerImage } from '../middlewares/uploading';
+
 const postsRoutes = Router();
 const postsController = new PostsController();
 
 postsRoutes.get('/posts', postsController.index);
 postsRoutes.get('/posts/add', postsController.store);
 postsRoutes.post('/posts/add', postsController.save);
+postsRoutes.post('/posts/create', uploadProductImages, resizerImage, postsController.createProduct);
 postsRoutes.get('/posts/:slug/edit', postsController.update);
 postsRoutes.post('/posts/:slug/edit', postsController.updateAction);
 postsRoutes.get('/posts/:slug', postsController.show);

@@ -1,22 +1,26 @@
 {{>header/index}}
-<main>
-<h1>Posts 2</h1>
-
-{{^posts}}
+<main class="container">
+<div class="content">
+  <h1>Posts 2</h1>
+  
+  {{^posts}}
   <div>Not Posts</div>
-{{/posts}}
-{{#posts}}
-<div>
-  <a href="posts/{{slug}}"><h2>{{title}}</h2></a>
-  <p>{{body}}</p>
-  <div>
-    {{#tags}}
-      <small>{{.}}</small>
-    {{/tags}}
+  {{/posts}}
+  <div class="posts">
+    {{#posts}}
+    <div class="post">
+      <a href="posts/{{slug}}">
+        <h2>{{title}}</h2>
+      </a>
+      <p>{{body}}</p>
+      <div>
+        {{#tags}}
+        <small>{{.}}</small>
+        {{/tags}}
+      </div>
+      <a href="posts/{{slug}}/edit">[ Edit ]</a>
+    </div>
+    {{/posts}}
   </div>
-  <br>
-  <a href="posts/{{slug}}/edit">[ Edit ]</a>
-  <hr>
 </div>
-{{/posts}}
 </main>

@@ -127,6 +127,13 @@ class PostsController {
 
     }
   }
+
+  async createProduct(request, response) {
+    response.status(201).json({
+      status: "success",
+      gallery: request.body.gallery,
+    })
+  }
 }
 
 export { PostsController };
