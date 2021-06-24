@@ -27,7 +27,7 @@ const upload = multer({
 });
 
 // Multer .fields() filename
-const uploadProductImages = upload.fields([
+const uploadFileImages = upload.fields([
   {name: "avatar", maxCount: 1},
   {name: "cover", maxCount: 1},
   {name: "gallery", maxCount: 4},
@@ -39,7 +39,7 @@ const uploadProductImages = upload.fields([
 // multer .single() 
 // const uploadProductImages = upload.single("cover", 1)
 
-const resizerImage = async (request, file, next) => {
+const resizeFileImages = async (request, file, next) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = `${today.getMonth() + 1}`.padStart(2, "0");
@@ -94,4 +94,4 @@ const resizerImage = async (request, file, next) => {
   next();
 }
 
-export { uploadProductImages, resizerImage };
+export { uploadFileImages, resizeFileImages };

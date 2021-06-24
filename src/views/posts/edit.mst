@@ -15,6 +15,10 @@
     <span>Content</span>
     <textarea type="text" name="body" id="" >{{post.body}}</textarea>
   </label>
+  <label for="gallery">
+    <span>Title</span>
+    <input type="text" name="gallery" id="" value="{{post.gallery}}" />
+  </label>
   <input type="submit" value="Save" />
 </form>
 </div>

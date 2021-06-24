@@ -1,6 +1,6 @@
 {{>header/index}}
 <div class="form_default">
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     <h1>Add posts</h1>
     <label for="title">
       <span>Title</span>
@@ -13,6 +13,10 @@
     <label for="body">
       <span>Content</span>
       <textarea type="text" name="body" id=""></textarea>
+    </label>
+    <label for="image">
+      <span>Images</span>
+      <input type="file" name="photo" id="" />
     </label>
     <input type="submit" value="Save" />
   </form>

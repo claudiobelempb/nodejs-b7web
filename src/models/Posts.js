@@ -20,6 +20,9 @@ const posts = new mongoose.Schema({
   tags: {
     type: [String],
   },
+  photo: {
+    type: String,
+  },
   status: {
     type: Boolean,
     default: true,

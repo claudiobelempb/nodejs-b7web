@@ -1,15 +1,17 @@
 import MulterSharpResizer from 'multer-sharp-resizer';
+// import path from 'path';
 
-const resizeImage = async (request, response, next) => {
-  const { file } = request.body;
+const resizeFileImages = async (request, file, next) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = `${today.getMonth() + 1}`.padStart(2, "0");
+  // const tmpFolder = path.resolve(__dirname, '../', '../', 'public/assets/uploads');
 
   const filename = {
     avatar: `avatar-${Date.now()}`,
     cover: `cover-${Date.now()}`,
     gallery: `gallery-${Date.now()}`,
+    file: `file`,
   }
 
   const sizer = [
@@ -21,11 +23,11 @@ const resizeImage = async (request, response, next) => {
   ];
 
   // expo public/uploads/2021/06/posts/user/medium/image.png
-  const uploadPath = `./public/uploads/${year}/${month}/${file}`;
+  const uploadPath = `./public/assets/uploads/${year}/${month}`;
   console.log(uploadPath);
 
   // expo public/uploads/2021/06/posts/user/medium/image.png
-  const fileUrl = `${request.protocol}://${request.get("host")}/uploads/${year}/${month}/${file}`;
+  const fileUrl = `${request.protocol}://${request.get("host")}/uploads/${year}/${month}`;
   console.log(fileUrl);
 
   // sharp options
@@ -54,4 +56,4 @@ const resizeImage = async (request, response, next) => {
   next();
 }
 
-export { resizeImage };
+export { resizeFileImages };

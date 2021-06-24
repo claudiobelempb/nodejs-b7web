@@ -45,7 +45,7 @@ class PostsController {
   }
 
   async save(request, response) {
-    const { title, tags, body } = request.body;
+    const { title, tags, body, photo } = request.body;
 
     const existsTitle = await Posts.findOne({title});
 
@@ -62,6 +62,7 @@ class PostsController {
       title, 
       tags: tagsArray,
       body,
+      photo,
     }
 
     try{
@@ -78,7 +79,7 @@ class PostsController {
   async update(request, response) {
     const { slug } = request.params;
 
-    const post = await Posts.findOne({slug}, '_id title tags body slug createdAt updatedAt');
+    const post = await Posts.findOne({slug});
 
     if(slug !== post.slug){
       request.flash('error', `Error: Post not exists`);
@@ -96,6 +97,7 @@ class PostsController {
   async updateAction(request, response){
     try{
       const { title, tags, body } = request.body;
+  
       const { slug } = request.params;
 
       const post = await Posts.findOne({ slug });
@@ -112,6 +114,7 @@ class PostsController {
         title,
         tags: tagsArray,
         body,
+        cover: request.body.cover,
         slug: slugPost(title, { lower: true }),
       }
 
@@ -128,7 +131,7 @@ class PostsController {
     }
   }
 
-  async createProduct(request, response) {
+  async createFile(request, response) {
     response.status(201).json({
       status: "success",
       gallery: request.body.gallery,
